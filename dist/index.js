@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const EventManager_1 = require("./observables/EventManager");
+const EmailNotifier_1 = require("./observadores/EmailNotifier");
+const FaxNotifier_1 = require("./observadores/FaxNotifier");
+const PushNotifier_1 = require("./observadores/PushNotifier");
+const push = new PushNotifier_1.PushNotifier();
+const email = new EmailNotifier_1.EmailNotifier();
+const fax = new FaxNotifier_1.FaxNotifier();
+const manager = new EventManager_1.EventManager();
+manager.addObserver(push);
+manager.addObserver(email);
+manager.addObserver(fax);
+manager.notify("Evento novo");
